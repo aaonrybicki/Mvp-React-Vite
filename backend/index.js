@@ -4,11 +4,12 @@ const app = express();
 app.use(express.json());
 const cors = require('cors');
 app.use(cors());
-const config=require('./config')[process.env.NODE_ENV||'dev'];
-// const PORT = config.port;
-const PORT = 8001;
+// const config=require('./config')[process.env.NODE_ENV||'dev'];
+const PORT = PORT;
+// const PORT = 8001;
 const pool= new Pool({
-	connectionString: config.connectionString
+	// connectionString: config.connectionString
+	connectionString: POSTGRES_CONNECTION_STRING + '?ssl=true'
 });
 
 pool.connect();
